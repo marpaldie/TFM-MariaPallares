@@ -8,8 +8,8 @@ Este repositorio contiene el código y los datos necesarios para reproducir los 
 El trabajo aborda la distribución geográfica y temporal de la mortalidad por enfermedad cerebrovascular en los condados continentales del país a lo largo de dos décadas. Se adopta un marco de modelización jerárquica bayesiana basado en la verosimilitud de Poisson, utilizando la reparametrización BYM2 para la componente espacial y una interacción espaciotemporal de tipo no estructurado (Tipo I de Knorr-Held). La inferencia se realiza mediante la aproximación integrada de Laplace anidada (INLA) combinada con previas de complejidad penalizada.
 
 ## Estructura del Repositorio
-* **`datos/`**: Directorio destinado a los archivos de datos espaciales, datos de mortalidad extraídos de CDC WONDER y variables socioeconómicas del American Community Survey.
-* **`figuras/`**: Carpeta donde se exportan los mapas de riesgo relativo y gráficos generados.
+* **`datos/`**: Directorio destinado a los archivos de datos espaciales, datos de mortalidad extraídos de CDC WONDER.
+* **`figuras/`**: Carpeta donde se exportan los mapas de riesgo relativo y gráficos generados y el código para obtenerlos.
 * **`Codigo.R`**: Script principal que contiene la carga de librerías, procesamiento espacial, modelización jerárquica bayesiana y extracción de resultados.
 * **`INLA info.R`**: Script complementario con configuraciones o detalles técnicos específicos sobre el ajuste de los modelos gaussianos latentes.
 
