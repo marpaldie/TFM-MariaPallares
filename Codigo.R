@@ -129,7 +129,7 @@ datos_hombres <- datos_modelo %>% filter(Sex == "Male")
 
 # ── 6. COVARIABLES SOCIOECONÓMICAS (ACS) ─────────────────────────────────────
 
-# census_api_key("TU_KEY", install = TRUE)  # ya instalada
+# census_api_key("TU_KEY", install = TRUE)  
 
 covariables <- get_acs(
   geography = "county", year = 2019, survey = "acs5",
@@ -243,9 +243,6 @@ cat("  Tiempo:", round(difftime(Sys.time(), t0, units = "mins"), 1), "min\n")
 # =============================================================================
 
 # ── 11. TABLA COMPARATIVA DE MODELOS (Tablas 4.1, 4.2 y 4.3 del TFM) ─────────
-#
-# Solo BYM2 espacial y BYM2 + Tipo I. Las filas de Tipos II-IV en las tablas
-# del Word se rellenan con guion y una nota al pie justificando el descarte.
 
 resumen_modelo <- function(m, etiqueta, sexo) {
   phi <- tryCatch(m$summary.hyperpar["Phi for ID_area", "mean"],
