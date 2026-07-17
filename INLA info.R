@@ -18,7 +18,6 @@ sink("verificacion_inla.txt", split = TRUE)
 cat("=====================================================================\n")
 cat(" 1. VERSION EXACTA DE R-INLA\n")
 cat("=====================================================================\n")
-# Esto es lo que hay que poner en el texto donde ahora pone VERSION_INLA
 inla.version()
 cat("\nCadena corta para el texto: ", as.character(packageVersion("INLA")), "\n\n")
 
@@ -31,7 +30,6 @@ defaults <- inla.set.control.inla.default()
 cat("strategy      =", defaults$strategy, "\n")
 cat("int.strategy  =", defaults$int.strategy, "\n\n")
 
-# Comprobacion explicita de lo que afirma el TFM
 ok_strategy <- identical(defaults$strategy, "simplified.laplace")
 ok_int      <- identical(defaults$int.strategy, "auto")
 
@@ -56,7 +54,6 @@ cat("  int.strategy='auto'  ->  'grid' si n_hiper <= 2,  'ccd' si n_hiper > 2\n\
 
 load("todos_los_modelos.RData")
 
-# Ajustar estos nombres a los objetos reales del RData
 modelos <- Filter(function(x) inherits(get(x), "inla"), ls())
 
 if (length(modelos) == 0) {
@@ -72,12 +69,8 @@ if (length(modelos) == 0) {
     cat("  hiperparametros (", nhyper, "):\n", sep = "")
     for (h in rownames(fit$summary.hyperpar)) cat("     -", h, "\n")
     cat("  -> integracion efectiva: ", integr, "\n")
-    
-    # strategy que quedo registrada en el objeto ajustado
     st <- fit$.args$control.inla$strategy
     if (!is.null(st)) cat("  -> strategy registrada:  ", st, "\n")
-    
-    # diagnostico kld: discrepancia entre aproximaciones
     if (!is.null(fit$summary.random)) {
       klds <- unlist(lapply(fit$summary.random, function(d)
         if ("kld" %in% names(d)) max(d$kld, na.rm = TRUE) else NA))
